@@ -1,0 +1,455 @@
+import { Image } from 'mdx-deck';
+import { FullScreenCode } from 'mdx-deck/layouts';
+import Counter from './components/Counter';
+import Card from './components/Card';
+export { default as theme } from './theme';
+
+<!-- importing tailwind -->
+
+<link
+  href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+  rel="stylesheet"
+/>
+
+# Beginner React ⚛
+
+# 🧐
+
+---
+
+<img
+  className="m-auto"
+  style={{ width: '35%', borderRadius: '9999px' }}
+  src="https://avatars1.githubusercontent.com/u/21187304?s=460&v=4"
+  alt="miguel"
+/>
+
+# Miguel Acero
+
+Incoming Google Software Engineer Resident
+
+Ex JP Morgan Chase SWE Intern
+
+Hunter College Student
+
+JS Developer
+
+---
+
+## What this talk is about
+
+<div className="w-full flex justify-center my-5">
+  <div className="text-left">
+    <li> A beginner's guide to React </li>
+    <li> What is React </li>
+    <li> What are it's uses? </li>
+    <li> React Fundamentals </li>
+    <li> Live Coding </li>
+  </div>
+</div>
+
+Fun fact: this presentation is made in React👌
+
+---
+
+## What do you need to learn React?
+
+<div className="w-full flex justify-center my-5">
+  <div className="text-left">
+    <li> Basic familiarity with HTML/CSS/JS </li>
+    <li> Basic understanding of the DOM (Document Object Model) </li>
+    <li> Basic familiarity of Node.js and npm (Node package Manager) </li>
+    <li> A brain 🧠</li>
+  </div>
+</div>
+
+---
+
+# What is React?
+
+---
+
+"**React** is a Javascript library for building user interfaces"
+
+---
+
+### Most popular Javascript framework
+
+![](/images/github-react.png)
+
+- Developed, created, and managed by facebook
+
+---
+
+### Some Websites made in React
+
+<div className="flex flex-wrap justify-center mt-3 max-w-full">
+  <Card
+    title="airbnb"
+    img="https://helpiewp.com/wp-content/uploads/2019/09/How-to-create-an-Airbnb-like-website.jpg"
+  />
+  <Card
+    title="facebook"
+    img="https://cnet4.cbsistatic.com/img/FVUwJ89EEodekLikjr36kX-vCgM=/940x0/2019/04/29/c326fe47-a1bd-497e-bffd-3b150f888a55/news-feed-in-frame-2x.png"
+  />
+  <Card
+    title="instagram"
+    img="https://10web.io/wp-content/uploads/2017/11/instagram_1920-min.png"
+  />
+  <Card
+    title="reddit"
+    img="https://cloud.addictivetips.com/wp-content/uploads/2018/04/reddit-design-new.jpg"
+  />
+  <Card
+    title="Netflix"
+    img="https://icdn7.digitaltrends.com/image/digitaltrends/netflixtips13-2247x1498.jpg"
+  />
+  <Card
+    title="Outlook"
+    img="https://www.teachucomp.com/wp-content/uploads/blog-6-15-2018-findemailinoutlook.png"
+  />
+  <Card
+    title="Dropbox"
+    img="https://aem.dropbox.com/cms/content/dam/dropbox/blog/files/2017/04/screenshot4_1300x760-hover-blue-background.png"
+  />
+  <Card
+    title="Paypal"
+    img="https://miro.medium.com/max/2025/0*zWaA2Tpg7-wnDRYA."
+  />
+</div>
+
+---
+
+### What does a framework do?
+
+---
+
+### Let's try to create this effect
+
+<div className="flex justify-center my-8">
+  <img src="/images/abstraction.png" />
+</div>
+
+---
+
+### HTML/JS/CSS
+
+```html
+<body>
+  <div id="root"></div>
+  <script>
+    const div = document.createElement('div');
+    div.textContent = Date.now().toLocaleString();
+    div.className = 'container';
+    document.getElementById('root').appendChild(div);
+  </script>
+</body>
+```
+
+---
+
+Frameworks are an abstraction to this capability
+
+Below is the React Implementation
+
+```jsx
+const dateComponent = () => (
+  <div className="container">{Date.now().toLocaleString()}</div>
+);
+```
+
+---
+
+## Other Frameworks
+
+<div className="flex justify-center flex-wrap mt-8">
+  <img
+    className="w-1/3"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png"
+  />
+  <img
+    className="w-1/3"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"
+  />
+  <img
+    className="w-1/3"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/1200px-Svelte_Logo.svg.png"
+  />
+</div>
+
+---
+
+## JSX Syntax (React Only)
+
+```jsx
+const element = <h1>Hello, world!</h1>;
+```
+
+<img style={{ width: '2000px' }} src="https://i.stack.imgur.com/V6S0H.jpg" />
+
+---
+
+### Counter Component
+
+<Counter />
+
+```jsx
+import React, { useState } from 'react';
+const Counter = () => {
+  const [value, setValue] = useState(0);
+  return (
+    <div>
+      <button onClick={() => setValue(value - 1)}> - </button>
+      <h1> {value} </h1>
+      <button onClick={() => setValue(value + 1)}> + </button>
+    </div>
+  );
+};
+```
+
+---
+
+### Counter Component (Vanilla)
+
+```html
+<div>
+  <button class="decrease">-</button>
+  <h1>{value}</h1>
+  <button class="increase">+</button>
+</div>
+```
+
+```js
+const value = document.querySelector('h1');
+const increaseButton = document.querySelector('#increase');
+const decreaseButton = document.querySelector('#decrease');
+
+upvoteButton.addEventListener('click', () => vote(value + 1));
+downvoteButton.addEventListener('click', () => vote(value - 1));
+```
+
+---
+
+### React Engine
+
+<img src="https://res.cloudinary.com/indepth-dev/image/upload/w_1400,f_auto/local_media/2019/07/react-fiber.png" />
+
+---
+
+### The Virtual DOM
+
+Instead of the traditional _Document Object Model_ (DOM), which is a kind of tree-shaped data representation, React JS uses a newer concept - _Virtual Dom_
+
+<div className="flex justify-center">
+  <img src="https://i0.wp.com/programmingwithmosh.com/wp-content/uploads/2018/11/lnrn_0201.png?ssl=1" />
+</div>
+
+---
+
+# Lifecycle Methods
+
+<img src="https://hackernoon.com/hn-images/1*sn-ftowp0_VVRbeUAFECMA.png" />
+
+---
+
+# Why should we use React
+
+<div className="w-full flex justify-center my-5">
+  <div className="text-left">
+    <li>
+      {' '}
+      Makes web applications <b>Reactive</b>{' '}
+    </li>
+    <li> Has a vast javascript ecosystem with tons of packages </li>
+    <li> State/Prop data management </li>
+    <li> Helps organize websites into components </li>
+  </div>
+</div>
+
+---
+
+## Why shouldn't we use React? 😢😢
+
+- Large-Sized Library 🍆😲😲
+- Learning Curve
+- Usage of the virtual dom creates _Overhead_, which means the browser will load more files and code.
+- Coding in Vanilla or a Framework like svelte will often lead to **faster builds** and **faster load times** for browsers. This is only noticable on less powerful devices
+
+---
+
+# Sad
+
+<div className="flex justify-center">
+  <img
+    style={{ width: '1200px' }}
+    src="https://icon2.cleanpng.com/20180820/zs/kisspng-react-logo-redux-webpack-babel--5b7b7257dd6c53.084847561534816855907.jpg"
+    alt="react"
+  />
+</div>
+
+---
+
+# What exactly is a component and what does it solve?
+
+- A Component is a building block of a react app
+- Components prevent you from creating a file that is 1000 lines long
+- Components help you reuse logic and keeps your code DRY (don't reuse your code)
+
+---
+
+## Props and State
+
+- **Props** or properties lets you are values you can pass into a component
+- **State** are variables that you can store in reactive data
+
+---
+
+## Functional Components
+
+<img
+  className="mx-auto w-1/2"
+  src="https://img.pngio.com/vs-street-fighter-png-free-download-fourjayorg-street-fighter-vs-png-1024_875.png"
+  alt="VS"
+/>
+
+## Class Components
+
+---
+
+# Class Components
+
+```jsx
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      myState: 'New York'
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ myState: 'California' });
+  }
+
+  render() {
+    const { myState } = this.state;
+    const { myCity } = this.props;
+    const message = `The current state is ${myState}.`;
+    return (
+      <div>
+        <p> The current city is {myCity} </p>
+        <p> {message}
+      </div>
+    )
+  }
+}
+```
+
+```jsx
+<MyComponent myCity="New York City" />
+```
+
+![](/images/Output.png)
+
+---
+
+# Functional Components
+
+You would use a functional component over a class component if you simply do not need state.
+
+```jsx
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+
+Functional components do not have **state** unless...
+
+---
+
+# Functional Components with Hooks 🎣🎣🎣
+
+Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
+
+```jsx
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+---
+
+# Everything is a component
+
+[Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
+
+<div className="my-2">&nbsp;</div>
+
+> React isn't just a framework, it's a way of thinking about a webpage
+
+```notes
+We started to develop some principles, drawing inspiration from things like the Thinking in React documentation
+```
+
+---
+
+![](/images/react-component-think.png)
+
+---
+
+## Demo 😨
+
+![CodesandBox](https://codesandbox.io/s/stuy-hacks-presentation-8qnyq)
+
+---
+
+### React for Mobile Development? 📱🙀
+
+# React Native!
+
+<div className="flex">
+  <img src="https://cdn.lynda.com/course/577374/577374-637115164812129235-16x9.jpg" />
+</div>
+
+---
+
+### React for Desktop Development? 💻🙀
+
+# Electron!
+
+"Build cross platform desktop apps with _JavaScript_, _HTML_, and _CSS_"
+
+<div className="flex justify-center">
+  <img
+    className="m-2 w-1/4"
+    src="https://www.net-aware.org.uk/siteassets/images-and-icons/application-icons/app-icons-discord.png?w=585&scale=down"
+  />
+  <img
+    className="m-2 w-1/4"
+    src="https://electronjs.org/app-img/slack/slack-icon-128.png"
+  />
+  <img
+    className="m-2 w-1/4"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/1200px-Visual_Studio_Code_1.35_icon.svg.png"
+  />
+</div>
+
+---
+
+![](https://media2.giphy.com/media/a3IWyhkEC0p32/giphy.gif?cid=790b7611a6e19d5c4da8e7e1b2f891d54ca4c4c478b2dba8&rid=giphy.gif)
+
+---
+
+### References
+
+- [React JS Documentation](https://reactjs.org/docs/getting-started.html)

@@ -1,0 +1,22 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "A theme for mdx-slides",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck deck.mdx -p 8989",
+    "build": "cp ./images/* ./public/images && mdx-deck build deck.mdx"
+  },
+  "keywords": [
+    "theme"
+  ],
+  "author": "AceroM",
+  "license": "MIT",
+  "devDependencies": {
+    "mdx-deck": "^1.10.2"
+  },
+  "dependencies": {
+    "styled-components": "^4.4.1",
+    "superbox": "^2.1.0"
+  }
+}
