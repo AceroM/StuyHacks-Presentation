@@ -1,7 +1,5 @@
-# Design Systems and React
+# Beginner React
 
-Slide deck for my talk at [Zeit React meetup](https://zeit.co/react-meetup) - Friday, August 10th, 2018.
-
-🎥 [View rendered slides](https://github-ds.now.sh/), or [watch on YouTube](https://youtu.be/N-5TNKJ7eB0?t=15m25s)
+Slide Deck for my talk available on. on 1/4/2019
 
 Built with [mdx-deck](https://github.com/jxnblk/mdx-deck).
